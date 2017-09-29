@@ -35,7 +35,23 @@ public class MainActivity extends AppCompatActivity {
             display.setText(str);
         }
     }
-
+    public Double Count() {
+        res = display.getText().toString();
+        second = Double.parseDouble(res);
+        if(sign.equals("+")) {
+            result = first + second;
+        }
+        else if(sign.equals("-")) {
+            result = first - second;
+        }
+        else if(sign.equals("*")) {
+            result = first * second;
+        }
+        else if(sign.equals("/")) {
+            result = first / second;
+        }
+        return  result;
+    }
     public void onClickBtn(View v) {
         b1 = true;
         Button button = (Button) v;
@@ -62,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         sign = button.getText().toString();
         display.setText(sign);
         if(index != 0) {
-            first = PerformOperation();
+            first = Count();
         }
         textBtn = "";
         index++;
@@ -70,30 +86,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void calculate(View v) {
         if(b1) {
-            result = PerformOperation();
+            result = Count();
             format.setDecimalSeparatorAlwaysShown(false);
             display.setText(format.format(result).toString());
             b1 = false;
         }
 
-    }
-
-    public Double PerformOperation() {
-        res = display.getText().toString();
-        second = Double.parseDouble(res);
-        if(sign.equals("+")) {
-            result = first + second;
-        }
-        else if(sign.equals("-")) {
-            result = first - second;
-        }
-        else if(sign.equals("*")) {
-            result = first * second;
-        }
-        else if(sign.equals("/")) {
-            result = first / second;
-        }
-        return  result;
     }
 
     @Override
