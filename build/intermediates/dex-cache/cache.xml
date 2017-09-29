@@ -3,6 +3,24 @@
 
     <item
         is-multidex="true"
+        jar="C:\Users\1\.android\build-cache\256521eae5492241fd2a88a46cc4c5e33a2015d5\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="68956f5ba1517b7a3d513ba540548e257741cbae">
+        <dex dex="E:\Downloads\CalculatorNew\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_bdd183c36563d25e451135f5f6abeafc2153c33e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\Downloads\CalculatorNew\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="93a4502ece7c25305f97e2a02c129b0b930be773">
+        <dex dex="E:\Downloads\CalculatorNew\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_acecc559ff63bbcb4258f153b3c2725442aea7e9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="E:\Downloads\CalculatorNew\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
@@ -12,12 +30,21 @@
     </item>
     <item
         is-multidex="true"
-        jar="E:\Downloads\CalculatorNew\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="E:\Program Files\Android\Android Studio\gradle\m2repository\com\android\databinding\baseLibrary\2.3.3\baseLibrary-2.3.3.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.1"
-        sha1="d0b8718782b217170caeabb822fdde7012af1275">
-        <dex dex="E:\Downloads\CalculatorNew\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_acecc559ff63bbcb4258f153b3c2725442aea7e9\classes.dex" />
+        sha1="eb3399988a52099b0127e27fb5bed666eca86ace">
+        <dex dex="E:\Downloads\CalculatorNew\app\build\intermediates\transforms\dex\debug\folders\1000\10\baseLibrary-2.3.3_aa64d7e39d0996f693546867d4884aa416e70c63\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\1\.android\build-cache\bbdfb160dbcadaa480665f2cfa79d68291becae0\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="7f2f348b830f292429db987f74ba3e67c6752322">
+        <dex dex="E:\Downloads\CalculatorNew\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_afbc7d7999f3a6f44c23389c103d058f779a5bcc\classes.dex" />
     </item>
 
 </items>

@@ -1,7 +1,5 @@
 package com.example.a1.calculatornew;
 
-import android.os.StrictMode;
-import android.renderscript.Double2;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,11 +9,11 @@ import android.widget.TextView;
 import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView screen;
+    private TextView display;
     private String textBtn, sign = "", res;
-    private Double previousNumber = 0.0, nextNumber = 0.0, result = 0.0;
+    private Double first = 0.0, second = 0.0, result = 0.0;
     private int index = 0;
-    private static final String TAG = "LifecycleActivity";
+    private static final String TAG = "Lifecycle";
     private boolean b1 = true;
 
     String str;
@@ -26,31 +24,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        screen = (TextView)findViewById(R.id.main_text);
+        display = (TextView)findViewById(R.id.main_text);
         textBtn = "";
-        Log.d(TAG, "onCreate");
 
         if (savedInstanceState != null){
-            str = savedInstanceState.getString("str");
-            previousNumber = savedInstanceState.getDouble("previousNumber");
-            nextNumber = savedInstanceState.getDouble("nextNumber");
+            str = savedInstanceState.getString("text");
+            first = savedInstanceState.getDouble("first");
+            second = savedInstanceState.getDouble("second");
             sign = savedInstanceState.getString("sign");
-            Log.d("String", str);
-            Log.d("String1", previousNumber.toString());
-            Log.d("String2", nextNumber.toString());
-            screen.setText(str);
+            display.setText(str);
         }
-
-
     }
 
     public void onClickBtn(View v) {
         b1 = true;
         Button button = (Button) v;
         textBtn += button.getText().toString();
-        screen.setText(textBtn);
+        display.setText(textBtn);
         if(sign == "") {
-            previousNumber = Double.parseDouble(textBtn);
+            first = Double.parseDouble(textBtn);
         }
     }
 
@@ -61,17 +53,16 @@ public class MainActivity extends AppCompatActivity {
         sign = "";
         result = 0.0;
         index = 0;
-        screen.setText("");
+        display.setText("");
     }
 
     public void onClickSigns(View v) {
         b1 = true;
         Button button = (Button) v;
         sign = button.getText().toString();
-        screen.setText(sign);
+        display.setText(sign);
         if(index != 0) {
-            previousNumber = operation();
-            Log.d(previousNumber.toString(), "fdd");
+            first = PerformOperation();
         }
         textBtn = "";
         index++;
@@ -79,32 +70,40 @@ public class MainActivity extends AppCompatActivity {
 
     public void calculate(View v) {
         if(b1) {
-            result = operation();
+            result = PerformOperation();
             format.setDecimalSeparatorAlwaysShown(false);
-            screen.setText(format.format(result).toString());
+            display.setText(format.format(result).toString());
             b1 = false;
         }
 
     }
 
-    public Double operation() {
-        res = screen.getText().toString();
-        nextNumber = Double.parseDouble(res);
+    public Double PerformOperation() {
+        res = display.getText().toString();
+        second = Double.parseDouble(res);
         if(sign.equals("+")) {
-            result = previousNumber+nextNumber;
+            result = first + second;
         }
         else if(sign.equals("-")) {
-            result = previousNumber-nextNumber;
+            result = first - second;
         }
         else if(sign.equals("*")) {
-            result = previousNumber*nextNumber;
+            result = first * second;
         }
         else if(sign.equals("/")) {
-            result = previousNumber / nextNumber;
+            result = first / second;
         }
         return  result;
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString("text", display.getText().toString());
+        outState.putDouble("first", first);
+        outState.putDouble("second", second);
+        outState.putString("sign", sign);
+        super.onSaveInstanceState(outState);
+    }
 
     @Override
     protected void onStart() {
@@ -144,18 +143,4 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d(TAG, "onDestroy");
     }
-
-
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        outState.putString("str", screen.getText().toString());
-        outState.putDouble("previousNumber", previousNumber);
-        outState.putDouble("nextNumber", nextNumber);
-        outState.putString("sign", sign);
-        super.onSaveInstanceState(outState);
-    }
-
-
-
 }
